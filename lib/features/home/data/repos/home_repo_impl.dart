@@ -6,7 +6,9 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 class HomeRepoImpl implements HomeRepo {
-  final ApiService apiService = ApiService();
+  final ApiService apiService;
+
+  HomeRepoImpl(this.apiService);
   @override
   Future<Either<Failures, List<BookModel>>> fetchNewestBooks() async {
     try {

@@ -1,10 +1,13 @@
 import 'package:bookly_app/constants.dart';
+import 'package:bookly_app/core/utils/functions/custom_url_launcher.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
 class BookPrice extends StatelessWidget {
-  const BookPrice({super.key});
+  const BookPrice({super.key, required this.book});
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,9 @@ class BookPrice extends StatelessWidget {
         ),
         Expanded(
           child: CustomButton(
+            onPressed: () async {
+              await customUrlLauncher(context, book.volumeInfo.previewLink);
+            },
             textStyle: Styles.textStyle16Medium.copyWith(
               color: Colors.white,
               fontFamily: kGilroy,
@@ -36,10 +42,17 @@ class BookPrice extends StatelessWidget {
               topRight: Radius.circular(15),
               bottomRight: Radius.circular(15),
             ),
-            textData: "Free Preview",
+            textData: getText(book),
           ),
         ),
       ],
     );
+  }
+
+  String getText(BookModel book) {
+    if (book.volumeInfo.previewLink == null) {
+      return "No Preview";
+    }
+    return "Free Preview";
   }
 }

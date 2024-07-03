@@ -1,7 +1,7 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/app_routes.dart';
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/core/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/featured_list_view_item.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class BestSellerListViewItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    book.volumeInfo.authors!.first,
+                    book.volumeInfo.authors?.first ?? "",
                     maxLines: 1,
                     style: Styles.textStyle14.copyWith(
                       fontWeight: FontWeight.w500,

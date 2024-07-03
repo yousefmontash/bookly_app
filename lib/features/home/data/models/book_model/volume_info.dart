@@ -14,6 +14,8 @@ class VolumeInfo extends Equatable {
   final List<IndustryIdentifier>? industryIdentifiers;
   final ReadingModes? readingModes;
   final int? pageCount;
+  final int? averageRating;
+  final int? ratingsCount;
   final String? printType;
   final List<String>? categories;
   final String? maturityRating;
@@ -35,6 +37,8 @@ class VolumeInfo extends Equatable {
     this.industryIdentifiers,
     this.readingModes,
     this.pageCount,
+    this.averageRating,
+    this.ratingsCount,
     this.printType,
     this.categories,
     this.maturityRating,
@@ -62,6 +66,8 @@ class VolumeInfo extends Equatable {
             : ReadingModes.fromJson(
                 json['readingModes'] as Map<String, dynamic>),
         pageCount: json['pageCount'] as int?,
+        averageRating: json['averageRating'] as int?,
+        ratingsCount: json['ratingsCount'] as int?,
         printType: json['printType'] as String?,
         categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
         maturityRating: json['maturityRating'] as String?,
@@ -71,7 +77,8 @@ class VolumeInfo extends Equatable {
             ? null
             : PanelizationSummary.fromJson(
                 json['panelizationSummary'] as Map<String, dynamic>),
-        imageLinks: ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
+        imageLinks:
+            ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
         language: json['language'] as String?,
         previewLink: json['previewLink'] as String?,
         infoLink: json['infoLink'] as String?,
@@ -88,6 +95,8 @@ class VolumeInfo extends Equatable {
             industryIdentifiers?.map((e) => e.toJson()).toList(),
         'readingModes': readingModes?.toJson(),
         'pageCount': pageCount,
+        'ratingsCount': ratingsCount,
+        'averageRating': averageRating,
         'printType': printType,
         'categories': categories,
         'maturityRating': maturityRating,
@@ -112,6 +121,8 @@ class VolumeInfo extends Equatable {
       industryIdentifiers,
       readingModes,
       pageCount,
+      averageRating,
+      ratingsCount,
       printType,
       categories,
       maturityRating,

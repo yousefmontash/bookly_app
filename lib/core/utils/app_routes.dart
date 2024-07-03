@@ -26,8 +26,8 @@ abstract class AppRoutes {
       GoRoute(
         path: kBookDetailsView,
         builder: (context, state) => BlocProvider(
-          create: (context) => SimilarBooksCubit(getIt.get<HomeRepoImpl>())..getSimilarBooks(category: (state.extra as BookModel).volumeInfo.categories![0]),
-          child: const BookDetailsView(),
+          create: (context) => SimilarBooksCubit(getIt.get<HomeRepoImpl>()),
+          child:  BookDetailsView(book: state.extra as BookModel,),
         ),
       ),
       GoRoute(

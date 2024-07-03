@@ -21,7 +21,7 @@ class BookPrice extends StatelessWidget {
               topLeft: Radius.circular(15),
               bottomLeft: Radius.circular(15),
             ),
-            textData: "19.99€",
+            textData: "Free",
           ),
         ),
         Expanded(
